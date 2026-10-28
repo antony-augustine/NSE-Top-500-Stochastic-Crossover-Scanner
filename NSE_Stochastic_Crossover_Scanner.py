@@ -345,8 +345,8 @@ if run_button:
                 "Ticker", "Date", "Close", "Stoch_%K", "Stoch_%D",
                 # "Last_Crossover_Date", "Last_Crossover_Type", "Crossover_Close",
                 # "Pct_Change_Since_Crossover", "Trading_Days_Since_Crossover",
-                "Last_Signal_Date", "Last_Signal", "Pct_Change_Since_Last_Signal",
-                "Trading_Days_Since_Last_Signal", "Signal", "Chart",
+                "Last_Signal_Date", "Last_Signal", "Pct_Chg_Last_Signal",
+                "Days_Last_Signal", "Signal", "Chart",
             ]
             crossover_view = crossover_df[
                 [c for c in crossover_fields if c in crossover_df.columns]
