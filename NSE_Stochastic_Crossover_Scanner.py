@@ -15,7 +15,7 @@ st.set_page_config(page_title="NSE Stochastic Crossover Scanner", layout="wide")
 CSV_FILE = Path(r"D:\Py\ind_nifty500list_1.csv")
 OUTPUT_DIR = Path(r"D:\Py")
 
-OUTPUT_ALL = OUTPUT_DIR / "NSE500_Stochastic_1433_All.csv"
+OUTPUT_ALL = OUTPUT_DIR / "NSE500_Stochastic_1433_All_{datetime.now():%Y-%m-%d}.csv"
 OUTPUT_BUY = OUTPUT_DIR / f"NSE500_Stochastic_1433_{datetime.now():%Y-%m-%d}_BUY.csv"
 OUTPUT_BUY_WEB = OUTPUT_DIR / f"NSE500_Stochastic_1433_{datetime.now():%Y-%m-%d}_BUY_WEB.csv"
 OUTPUT_SELL = OUTPUT_DIR / "NSE500_Stochastic_1433_SELL.csv"
