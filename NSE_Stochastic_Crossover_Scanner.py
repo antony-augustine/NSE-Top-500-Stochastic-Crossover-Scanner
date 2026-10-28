@@ -139,8 +139,8 @@ def get_last_signal_details(df):
             "Last_Signal_Date": "",
             "Last_Signal": "",
             "Signal_Close": np.nan,
-            "Pct_Change_Since_Last_Signal": np.nan,
-            "Trading_Days_Since_Last_Signal": np.nan,
+            "Pct_Chg_Last_Signal": np.nan,
+            "Days_Last_Signal": np.nan,
         }
 
     signal_date = signal_rows.index[-1]
@@ -157,7 +157,7 @@ def get_last_signal_details(df):
         "Last_Signal": signal,
         "Signal_Close": round(signal_close, 2),
         "Pct_Change_Since_Last_Signal": round(pct_change, 2),
-        "Trading_Days_Since_Last_Signal": days_since,
+        "Days_Last_Signal": days_since,
     }
 
 
@@ -276,7 +276,7 @@ def run_scanner(symbols, progress_bar, status):
 
     result_df = pd.DataFrame(results)
     result_df = result_df.sort_values(
-        by=["Trading_Days_Since_Last_Signal", "Last_Signal", "Ticker"],
+        by=["Days_Last_Signal", "Last_Signal", "Ticker"],
         ascending=[True, True, True],
         na_position="last",
     ).reset_index(drop=True)
@@ -353,7 +353,7 @@ if run_button:
             ].copy()
 
             crossover_view = crossover_view.sort_values(
-                    by=["Trading_Days_Since_Last_Signal","Last_Signal", "Ticker"],
+                    by=["Days_Last_Signal","Last_Signal", "Ticker"],
                     ascending=[True, True, True],
                 )
             
@@ -399,11 +399,11 @@ if run_button:
 
             buy_df_history = result_df[result_df["Last_Signal"] == "BUY"].copy()
             buy_df_history_View = buy_df_history[[c for c in crossover_fields if c in buy_df_history.columns]].copy()
-            buy_df_history_View = buy_df_history_View.sort_values(by="Trading_Days_Since_Last_Signal", ascending=True)
+            buy_df_history_View = buy_df_history_View.sort_values(by="Days_Last_Signal", ascending=True)
         
             sell_df_history = result_df[result_df["Last_Signal"] == "SELL"].copy()
             sell_df_history_View = sell_df_history[[c for c in crossover_fields if c in sell_df_history.columns]].copy() 
-            sell_df_history_View = sell_df_history_View.sort_values(by="Trading_Days_Since_Last_Signal", ascending=True) 
+            sell_df_history_View = sell_df_history_View.sort_values(by="Days_Last_Signal", ascending=True) 
 
             st.subheader("Buy signals - History")
             if buy_df_history.empty:
